@@ -26,6 +26,10 @@ To uninstall this mod just delete the `open_sesame` folder from `\Cyberpunk 2077
 
 To uninstall CyberEngineTweaks please follow its uninstall instruction.
 
+## Bug
+
+ToolTip won't disapear during some mission when game time is paused.
+
 ## Credits
 
 - yamashi https://github.com/yamashi?tab=repositories
