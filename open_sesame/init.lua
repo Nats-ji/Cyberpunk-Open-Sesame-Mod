@@ -11,7 +11,7 @@ registerForEvent("onUpdate", function()
 		if (ImGui.IsKeyPressed(HotKey, false)) then
 			objLook = Game.GetTargetingSystem():GetLookAtObject(Game.GetPlayer(),false,false)
 			dsname = objLook:GetDisplayName()
-			if (dsname == "LocKey#69") or (dsname == "LocKey#74") or (dsname == "Gameplay-Devices-DisplayNames-DoorLift") or (dsname == "Gameplay-Devices-DisplayNames-Door") then
+			if (dsname == "LocKey#69") or (dsname == "LocKey#74") or (dsname == "LocKey#2136") or (dsname == "Gameplay-Devices-DisplayNames-DoorLift") or (dsname == "Gameplay-Devices-DisplayNames-Door") then
 				if (objLook.OpenDoor) then
 					objLook:OpenDoor() -- Real Door
 				else
