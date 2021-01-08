@@ -15,8 +15,7 @@ registerForEvent("onUpdate", function()
 				if (objLook.OpenDoor) then
 					objLook:OpenDoor() -- Real Door
 				else
-					gameTime = ts:GetGameTimeStamp()
-					print(gameTime)
+					gameTime = ts:GetGameTimeStamp() -- Use Time Stemp from the game to calcuate tooltip appear time.
 					drawFakeDoor = true -- Fake Door
 				end
 			end
