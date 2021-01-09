@@ -11,7 +11,11 @@ The default key is set to `E`. You can change it at Line 2 in the `init.lua` fil
 HotKey = 0x45
 ```
 
+![image](https://staticdelivery.nexusmods.com/mods/3333/images/814/814-1610181907-1868123266.png) ![image](https://staticdelivery.nexusmods.com/mods/3333/images/814/814-1610181908-199355911.png)
+
 **This mod cannot open doors with the "Open [Locked]" label. You can open the lock doors that have no "F Open" options. Most of them are in mission areas and have red lights above them (like the one in the cover image).**
+
+![image](https://i.imgur.com/yANm4pl.gif) ![image](https://i.imgur.com/w371Mpc.gif)
 
 
 ## Install & Use
