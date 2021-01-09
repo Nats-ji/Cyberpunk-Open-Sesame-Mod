@@ -4,6 +4,7 @@
 
 - Open locked doors with a single keypress.
 - Unlock Vehicles doors, also work Judy, Kerry, River, Panam's cars.
+- Kill NPCs and blow up cars with `Shift+E`
 
 The default key is set to `E`. You can change it at Line 2 in the `init.lua` file. You can find Key Codes at https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 
@@ -27,6 +28,8 @@ Put `open_sesame` folder inside `\Cyberpunk 2077\bin\x64\plugins\cyber_engine_tw
 Restart the game. Or reload Mods from the CyberEngineTweaks Console.
 
 To use it, you just simply press `E` on doors that are locked by the game to open them. (Doors with `Open [Locked]` are fake doors. You can only open real ones)
+
+Press `Shift+E` to blow up cars and kill npcs.
 
 ## Uninstall
 
