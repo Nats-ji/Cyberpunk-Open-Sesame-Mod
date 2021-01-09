@@ -1,10 +1,12 @@
 registerForEvent("onInit", function()
 	HotKey = 0x45 -- Change Hotkey Here. You can find Key Codes at https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
-    drawPopup = false
+	drawPopup = false
 	getTime = 0
-	print("******************************************************")
-    print("* Open Semame Mod Loaded... Press E to open any door *")
-	print("******************************************************")
+	print("************************************************")
+	print("* Open Semame Mod Loaded...                    *")
+	print("* Press E to open any doors and unlock cars    *")
+	print("* Press Shift+E to kill NPCs and blow up cars. *")
+	print("************************************************")
 end)
 
 registerForEvent("onUpdate", function()
