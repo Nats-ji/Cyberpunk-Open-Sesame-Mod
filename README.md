@@ -44,6 +44,6 @@ Please open an issue if you encountered a bug.
 ## Credits
 
 - yamashi https://github.com/yamashi?tab=repositories
-- Architect's CityH4CK mod inspired me to create this mod https://www.nexusmods.com/cyberpunk2077/mods/808
-- Development Team behind CyberEngineTweaks
+- WhySoSerious for answering every question I had about lua https://github.com/WSSDude420
+- Development Team behind CyberEngineTweaks and RED4extSDK
 - CP77 Modding Tools Discord Community https://discord.gg/cp77modding
