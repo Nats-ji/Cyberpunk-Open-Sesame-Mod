@@ -14,6 +14,7 @@
 registerForEvent("onInit", function()
 	HotKey = 0x45 -- Change Hotkey Here. You can find Key Codes at https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 	drawPopup = false
+	wWidth, wHeight = GetDisplayResolution()
 	getTime = 0
 	print("************************************************")
 	print("* Open Semame Mod Loaded...                    *")
@@ -28,7 +29,7 @@ registerForEvent("onUpdate", function()
 		player = Game.GetPlayer()
 		objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
 		objType = objLook:ToString()
-		
+
 		-- Real door --
 		if (objType == "Door") then
 			objName = objType
@@ -37,7 +38,7 @@ registerForEvent("onUpdate", function()
 			objLook:OpenDoor()
 			getTime = os:clock()
 			drawPopup = true
-			
+
 		-- Fake door --
 		elseif (objType == "FakeDoor") then
 			objName = objType
@@ -45,7 +46,7 @@ registerForEvent("onUpdate", function()
 			breachInfo = "Failed to breach the door."
 			getTime = os:clock()
 			drawPopup = true
-			
+
 		-- Vehicle door --
 		elseif (objLook:IsVehicle()) then
 			vehDestoryed = objLook:IsDestroyed()
@@ -74,7 +75,7 @@ registerForEvent("onUpdate", function()
 		player = Game.GetPlayer()
 		objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
 		objType = objLook:ToString()
-		
+
 		-- Kill NPC --
 		if (objType == "NPCPuppet") then
 			if (not objLook:IsDead()) then
@@ -86,7 +87,7 @@ registerForEvent("onUpdate", function()
 				getTime = os:clock()
 				drawPopup = true
 			end
-			
+
 		-- Explode Vehicle --
 		elseif (objLook:IsVehicle()) then
 			vehName = objLook:GetDisplayName()
@@ -111,11 +112,12 @@ registerForEvent("onUpdate", function()
 end)
 
 registerForEvent("onDraw", function()
-	ImGui.PushStyleColor(ImGuiCol.PopupBg, 0.21, 0.08, 0.08, 0.85)
+	ImGui.PushStyleColor(ImGuiCol.WindowBg, 0.21, 0.08, 0.08, 0.85)
 	ImGui.PushStyleColor(ImGuiCol.Border, 0.4, 0.17, 0.12, 1)
 	ImGui.PushStyleColor(ImGuiCol.Separator, 0.4, 0.17, 0.12, 1)
 	if (drawPopup) then
-		ImGui.BeginTooltip()
+		ImGui.Begin("Popup", true, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize)
+		ImGui.SetWindowPos(wWidth/2, wHeight/2)
 		ImGui.SetWindowFontScale(1.6)
 			ImGui.Spacing()
 			ImGui.TextColored(0.2, 1, 1, 1, "DATA")
@@ -140,7 +142,7 @@ registerForEvent("onDraw", function()
 			ImGui.Spacing()
 			ImGui.TextColored(0.2, 1, 1, 1, breachInfo)
 			ImGui.Spacing()
-		ImGui.EndTooltip()
+		ImGui.End()
 		if (os:clock() > getTime + 2) then
 			drawPopup = false
 		end
