@@ -12,7 +12,6 @@
 -- along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 registerForEvent("onInit", function()
-	HotKey = 0x45 -- Change Hotkey Here. You can find Key Codes at https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 	drawPopup = false
 	wWidth, wHeight = GetDisplayResolution()
 	getTime = 0
