@@ -23,91 +23,87 @@ registerForEvent("onInit", function()
 	print("************************************************")
 end)
 
-registerForEvent("onUpdate", function()
-	if (not ImGui.IsKeyDown(0x10) and ImGui.IsKeyPressed(HotKey, false)) then
-		drawPopup = false
-		player = Game.GetPlayer()
-		objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
-		objType = objLook:ToString()
+registerHotkey("open_sesame_open", "Open/Unlock Hotkey", function()
+	drawPopup = false
+	player = Game.GetPlayer()
+	objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
+	objType = objLook:ToString()
 
-		-- Real door --
-		if (objType == "Door") then
-			objName = objType
-			detailInfo = "Open Sesame..."
-			breachInfo = "The door has been opened."
-			objLook:OpenDoor()
-			getTime = os:clock()
-			drawPopup = true
+	-- Real door --
+	if (objType == "Door") then
+		objName = objType
+		detailInfo = "Open Sesame..."
+		breachInfo = "The door has been opened."
+		objLook:OpenDoor()
+		getTime = os:clock()
+		drawPopup = true
 
-		-- Fake door --
-		elseif (objType == "FakeDoor") then
-			objName = objType
-			detailInfo = "This is a fake door..."
-			breachInfo = "Failed to breach the door."
-			getTime = os:clock()
-			drawPopup = true
+	-- Fake door --
+	elseif (objType == "FakeDoor") then
+		objName = objType
+		detailInfo = "This is a fake door..."
+		breachInfo = "Failed to breach the door."
+		getTime = os:clock()
+		drawPopup = true
 
-		-- Vehicle door --
-		elseif (objLook:IsVehicle()) then
-			vehDestoryed = objLook:IsDestroyed()
-			if (not vehDestoryed) then
-				vehName = objLook:GetDisplayName()
-				vehPS = objLook:GetVehiclePS()
-				vehComp = objLook:GetVehicleComponent()
-				vehOcc = not is_empty(vehPS:GetNpcOccupiedSlots())
-				vehMass = objLook:GetTotalMass()
-				objName = vehName
-				detailInfo = vehName.." weighs "..vehMass.."KG"
-				breachInfo = "Vehicle doors has been unlocked."
-				if (vehOcc) then -- Vehicle is occupied by npc
-					vehComp:DestroyVehicle() -- Eject NPCs
-					vehComp:RepairVehicle()
-					vehComp:DestroyMappin() -- RepairVehicle() somehow adds mappin
-				end
-				vehPS:UnlockAllVehDoors()	-- Open Vehicle Doors
-				vehComp:HonkAndFlash()
-				getTime = os:clock()
-				drawPopup = true
-			end
-		end
-	elseif (ImGui.IsKeyDown(0x10) and ImGui.IsKeyPressed(HotKey, false)) then
-		drawPopup = false
-		player = Game.GetPlayer()
-		objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
-		objType = objLook:ToString()
-
-		-- Kill NPC --
-		if (objType == "NPCPuppet") then
-			if (not objLook:IsDead()) then
-				npcName = objLook:GetDisplayName()
-				objName = npcName
-				detailInfo = npcName.." is a NPC."
-				breachInfo = npcName.." has been killed."
-				objLook:Kill(player, false, false)  -- Kill NPC by player
-				getTime = os:clock()
-				drawPopup = true
-			end
-
-		-- Explode Vehicle --
-		elseif (objLook:IsVehicle()) then
+	-- Vehicle door --
+	elseif (objLook:IsVehicle()) then
+		vehDestoryed = objLook:IsDestroyed()
+		if (not vehDestoryed) then
 			vehName = objLook:GetDisplayName()
+			vehPS = objLook:GetVehiclePS()
 			vehComp = objLook:GetVehicleComponent()
+			vehOcc = not is_empty(vehPS:GetNpcOccupiedSlots())
 			vehMass = objLook:GetTotalMass()
-			vehDestoryed = objLook:IsDestroyed()
-			vehComp:ExplodeVehicle(player)
-			vehComp:DestroyVehicle()
 			objName = vehName
 			detailInfo = vehName.." weighs "..vehMass.."KG"
-			breachInfo = "Vehicle has been blown up."
-			if (not vehDestoryed) then
-				getTime = os:clock()
-				drawPopup = true
+			breachInfo = "Vehicle doors has been unlocked."
+			if (vehOcc) then -- Vehicle is occupied by npc
+				vehComp:DestroyVehicle() -- Eject NPCs
+				vehComp:RepairVehicle()
+				vehComp:DestroyMappin() -- RepairVehicle() somehow adds mappin
 			end
+			vehPS:UnlockAllVehDoors()	-- Open Vehicle Doors
+			vehComp:HonkAndFlash()
+			getTime = os:clock()
+			drawPopup = true
 		end
--- Dump object
---	elseif (ImGui.IsKeyDown(0x10) and ImGui.IsKeyPressed(0x52, false)) then
---		objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
---		print(Dump(objLook))
+	end
+end)
+
+registerHotkey("open_sesame_kill", "Kill/Explode Hotkey", function()
+	drawPopup = false
+	player = Game.GetPlayer()
+	objLook = Game.GetTargetingSystem():GetLookAtObject(player,false,false)
+	objType = objLook:ToString()
+
+	-- Kill NPC --
+	if (objType == "NPCPuppet") then
+		if (not objLook:IsDead()) then
+			npcName = objLook:GetDisplayName()
+			objName = npcName
+			detailInfo = npcName.." is a NPC."
+			breachInfo = npcName.." has been killed."
+			objLook:Kill(player, false, false)  -- Kill NPC by player
+			getTime = os:clock()
+			drawPopup = true
+		end
+
+	-- Explode Vehicle --
+	elseif (objLook:IsVehicle()) then
+		vehName = objLook:GetDisplayName()
+		vehComp = objLook:GetVehicleComponent()
+		vehMass = objLook:GetTotalMass()
+		vehDestoryed = objLook:IsDestroyed()
+		vehComp:ExplodeVehicle(player)
+		vehComp:DestroyVehicle()
+		objName = vehName
+		detailInfo = vehName.." weighs "..vehMass.."KG"
+		breachInfo = "Vehicle has been blown up."
+		if (not vehDestoryed) then
+			getTime = os:clock()
+			drawPopup = true
+		end
 	end
 end)
 
