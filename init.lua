@@ -117,7 +117,7 @@ registerForEvent("onDraw", function()
 	ImGui.PushStyleColor(ImGuiCol.Border, 0.4, 0.17, 0.12, 1)
 	ImGui.PushStyleColor(ImGuiCol.Separator, 0.4, 0.17, 0.12, 1)
 	if (drawPopup) then
-		ImGui.Begin("Popup", true, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize)
+		ImGui.Begin("Popup", true, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoNav )
 		ImGui.SetWindowPos(wWidth/2, wHeight/2)
 		ImGui.SetWindowFontScale(1.6)
 			ImGui.Spacing()
