@@ -23,8 +23,6 @@ registerForEvent("onInit", function()
 	getTime = 0
 	print("************************************************")
 	print("* Open Semame Mod Loaded...                    *")
-	print("* Press E to open any doors and unlock cars    *")
-	print("* Press Shift+E to kill NPCs and blow up cars. *")
 	print("************************************************")
 end)
 
@@ -117,7 +115,7 @@ registerForEvent("onDraw", function()
 	ImGui.PushStyleColor(ImGuiCol.Border, 0.4, 0.17, 0.12, 1)
 	ImGui.PushStyleColor(ImGuiCol.Separator, 0.4, 0.17, 0.12, 1)
 	if (drawPopup) then
-		ImGui.Begin("Popup", true, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoNav )
+		ImGui.Begin("Popup", true, bit32.bor(ImGuiWindowFlags.NoResize, ImGuiWindowFlags.NoMove, ImGuiWindowFlags.NoTitleBar, ImGuiWindowFlags.AlwaysAutoResize, ImGuiWindowFlags.NoNav))
 		ImGui.SetWindowPos(wWidth/2, wHeight/2)
 		ImGui.SetWindowFontScale(1.6)
 			ImGui.Spacing()
