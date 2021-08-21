@@ -1,0 +1,11 @@
+{
+  "3DM_MOD_ID": 172143,
+  "3DM_MOD_TITLE": "芝麻开门MOD（E键开门解锁等等）",
+  "3DM_MOD_TAGS": "Cyber Engine Tweaks,赛博朋克2077,Cyberpunk 2077,开门,解锁,CET,控制台",
+  "3DM_MOD_DESC": "使用热键开上锁的门、车门，引爆汽车，杀死NPC",
+  "3DM_MOD_CONTENT": "README_zh.md",
+  "UNEX_GAME": "cyberpunk2077",
+  "UNEX_MODID": 814,
+  "UNEX_FILEDESCRIPTION": "Check here for release note: https://github.com/Nats-ji/Cyberpunk-Open-Sesame-Mod/releases/latest",
+  "MOD_FILE_NAME": "open_sesame"
+}
