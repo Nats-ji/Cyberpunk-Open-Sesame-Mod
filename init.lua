@@ -22,7 +22,7 @@ registerForEvent("onInit", function()
 	wWidth, wHeight = GetDisplayResolution()
 	getTime = 0
 	print("************************************************")
-	print("* Open Semame Mod Loaded...                    *")
+	print("* Open Sesame Mod Loaded...                    *")
 	print("************************************************")
 end)
 
@@ -39,6 +39,11 @@ registerHotkey("open_sesame_open", "Open/Unlock Hotkey", function()
   		objName = objType
   		detailInfo = "Open Sesame..."
   		breachInfo = "The door has been opened."
+		local handlePS = objLook:GetDevicePS()
+		if handlePS:IsSealed() then handlePS:ToggleSealOnDoor() end
+		if handlePS:IsLocked() then
+			handlePS:ToggleLockOnDoor()
+		end
   		objLook:OpenDoor()
   		getTime = os:clock()
   		drawPopup = true
