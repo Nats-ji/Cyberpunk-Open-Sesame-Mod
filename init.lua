@@ -1,7 +1,7 @@
 -- CP77 Open Sesame Mod is a mod which gives you abilities to open
 -- locked doors and vehicles in Cyberpunk 2077.
 
--- Copyright (C) 2020-2021 Mingming Cui
+-- Copyright (C) 2020-2024 Mingming Cui
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -21,9 +21,7 @@ registerForEvent("onInit", function()
 	drawPopup = false
 	wWidth, wHeight = GetDisplayResolution()
 	getTime = 0
-	print("************************************************")
-	print("* Open Sesame Mod Loaded...                    *")
-	print("************************************************")
+	print("Open Sesame Mod Loaded")
 end)
 
 registerHotkey("open_sesame_open", "Open/Unlock Hotkey", function()
